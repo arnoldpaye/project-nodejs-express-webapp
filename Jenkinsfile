@@ -2,19 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('initialize') {
             steps {
-                echo 'Building..'
+                sh 'whoami'
+                sh 'node --version'
+                sh 'npm -version'
             }
         }
-        stage('Test') {
+        stage('npm-install') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo "Branch is ${env.BRANCH_NAME}..."
+                sh 'npm install'
             }
         }
     }
