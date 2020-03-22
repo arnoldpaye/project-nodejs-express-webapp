@@ -1,20 +1,23 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:latest'
+            args '-p 3000:3000 -p 5000:5000'
+            args '-u 0:0'
+        }
+    }
 
     stages {
-        stage('Build') {
+        stage('initialize') {
             steps {
-                echo 'Building..'
+                sh 'node --version'
+                sh 'npm -version'
             }
         }
-        stage('Test') {
+        stage('npm-install') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+             echo "Branch is ${env.BRANCH_NAME}..."
+                sh 'npm install'
             }
         }
     }
