@@ -28,7 +28,12 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "coveragePathIgnorePatterns": ["/node_modules/"],
-    "coverageReporters": ["text", "cobertura"]
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ]
   }
 }
